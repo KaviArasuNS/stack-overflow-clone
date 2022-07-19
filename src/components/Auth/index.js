@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import './index.css'
+import { useHistory } from 'react-router-dom';
 
 
 const Index = () => {
@@ -11,14 +12,18 @@ const Index = () => {
     const [username, setUsername] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    
+    const history = useHistory();
 
     const handleSignInGoogle = () => {
         signInWithPopup(auth, provider).then((res) => {
+            history.push("/");
             console.log(res);
         })
     }
 
-    const handleSignIn = () => {
+    const handleSignIn = (e) => {
+    e.preventDefault();
     setError("");
     setLoading(true);
     if (email === "" || password === "") {
@@ -28,6 +33,7 @@ const Index = () => {
         signInWithEmailAndPassword(auth, email, password).then((res) => {
             console.log(res);
             setLoading(false);
+            history.push('/');
         }).catch((error) => {
             console.log(error.code);
             setError(error.message);
@@ -36,14 +42,17 @@ const Index = () => {
     }
 }
 
-    const handleRegister = () => {
-        setError("")
+    const handleRegister = (e) => {
+        setError("");
+        e.preventDefault();
         setLoading(true)
         if(email === "" || password == "" || username === ""){
             setError('Required field is missing');
+            setLoading(false);
         } else {
             createUserWithEmailAndPassword(auth, email, password).then((res) => {
                 setLoading(false);
+                history.push('/');
                 console.log(res)
             }).catch((error) => {
                 console.log(error);
@@ -67,44 +76,52 @@ const Index = () => {
                         <>
                         <div className="input-field">
                             <p>Username</p>
-                            <input type="text"/>
+                            <input value={username} onChange={(e) => setUsername(e.target.value)} type="username"/>
                         </div>
                         <div className="input-field">
                             <p>Email</p>
-                            <input type="text" />
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
                         </div>
                         <div className="input-field">
                             <p>Password</p>
-                            <input type="password" />
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
                         </div> 
-                        <button style={{
+                        <button onClick = {handleRegister}
+                                disabled={loading}
+                        style={{
                             marginTop: "10px"
                         }}
-                        >Register</button>
+                        >
+                            {loading ? "Registering..." : "Register" }
+                        </button>
                         </>
                     ) : (
                             <>
-                            <div className="input-field">
+                            {/* <div className="input-field">
                             <p>Username</p>
-                            <input type="text"/>
-                        </div>
+                            <input  value={username} onChange={(e) => setUsername(e.target.value)} type="text"/>
+                        </div> */}
                         <div className="input-field">
                             <p>Email</p>
-                            <input type="text" />
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
                         </div>
                         <div className="input-field">
                             <p>Password</p>
-                            <input type="password" />
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
                         </div> 
-                        <button style={{
+                        <button onClick={handleSignIn}
+                                disabled={loading}
+                        style={{
                             marginTop: "10px"
                         }}
                        
-                        >Login</button>
+                        >
+                            {loading ? "Sigining In..." : "Login"}
+                        </button>
                             </>
                     )}
-                    <p style={{
-                        // onClick={() => setRegister(!register)}
+                    <p  onClick={() => setRegister(!register) }
+                        style={{    
                         marginTop: "10px",
                         textAlign: "center",
                         color: "#0095ff",
@@ -113,6 +130,15 @@ const Index = () => {
                     }}>{register ? "Login" : "Register"}?</p>
                 </div>
             </div>
+            {   
+                error !== "" && (<p style={{
+                    color: "red",
+                    fontSize: "14px",
+                }}>
+                    {error}
+                </p>)
+
+            }
         </div>
     </div>
    </div>
