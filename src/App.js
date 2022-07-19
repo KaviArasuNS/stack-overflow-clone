@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import StackOverflow from "./components/StackOverflow";
+import ViewQuestion from './components/ViewQuestion' 
+import Question from './components/AddQuestion/Question';
+import Auth from './components/Auth'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
+import { useEffect } from 'react';
 
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+    // useEffect(() =>{
+    //   auth.onAuthStateChanged
+    // },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/auth" component={Auth} />
+          <Route exact path="/" component={StackOverflow}/>
+          <Route exact path="/question" component={ViewQuestion}/>
+          <Route exact path="/add-question" component={Question}/>
+        </Switch>
+      </Router>
     </div>
-  );
+  )
 }
 
 export default App;
