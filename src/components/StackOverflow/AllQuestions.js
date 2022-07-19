@@ -6,7 +6,19 @@ import { Link } from "react-router-dom";
 import { Avatar } from '@mui/material';
 // import { stringAvatar } from "../../utils/Avatar";
 
-const AllQuestions = () => {
+const AllQuestions = ({stackData}) => {
+  // const stackData = {
+  //       title: "How to get state from custom hooks to update in parent component?",
+  //       description: "I am trying to separate some logic from my component into a custom hook. I feel like i'm misunderstanding some fundamentals but I thought my code would work. I basically update my state in my custom useTrip hook, and i want my map component to have that same updated state.",
+  //       language1: "javascript",
+  //       language2: "reactjs",
+  //       language3: "react-hooks",
+  //       votes: "3",
+  //       views: "10",
+  //       username:"Rahul",
+
+  //   };
+
   return (
     <div className="all-questions">
       <div className="all-questions-container">
@@ -14,19 +26,21 @@ const AllQuestions = () => {
           <div className="all-options">
             <div className="all-option">
               <p>0</p>
-              <span>votes</span>
+              <span>{stackData.votes}</span>                                                                   
             </div>
             <div className="all-option">
               {/* <p>{data?.answerDetails?.length}</p> */}
               <span>answers</span>
             </div>
             <div className="all-option">
-              <small>2 views</small>
+              <small>{stackData.views}</small>                                                            
             </div>
           </div>
         </div>
         <div className="question-answer">
-          <a href="/question">Selenium using Java Project in VS code</a>
+          <a href="/question">
+            {stackData.title}                                                                       
+            </a>
             {/* <Link to='/question'>Selenium using Java Project in VS code</Link> */}
           {/* <Link to={`/question?q=${data?._id}`}>{data.title}</Link> */}
 
@@ -37,7 +51,7 @@ const AllQuestions = () => {
               maxWidth: "90%",
             }}
           >
-            How to set up selenium project in vs code with java as programming language. I was able to create a java project in VS code but then not able to create a selenium project
+            {stackData.description}                                                                
             {/* <div>{ReactHtmlParser(truncate(data.body, 200))}</div> */}
           </div>
           <div
@@ -45,9 +59,9 @@ const AllQuestions = () => {
               display: "flex",
             }}
           >
-            <span className="question-tags">react</span>
-            <span className="question-tags">node</span>
-            <span className="question-tags">Backend</span>
+            <span className="question-tags">{stackData.language1}</span>                             
+            <span className="question-tags">{stackData.language2}</span>                              
+            <span className="question-tags">{stackData.language3}</span>                             
             {/* {tags.map((_tag) => (
               <p
                 style={{
@@ -70,7 +84,7 @@ const AllQuestions = () => {
                   ? data?.user?.displayName
                   : "Natalie lee"} */}
                   <Avatar/>
-                  <p>User Name</p>
+                  <p>{stackData.username}</p>
               </p>
             </div>
           </div>
