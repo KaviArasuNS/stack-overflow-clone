@@ -65,12 +65,12 @@ const Main = () => {
 //     },
 // ];
   
-const API = "https://kavi-node-app.herokuapp.com";
+const API = "https://guvi-stack-clone.herokuapp.com";
 
 const [stackData, setStackData] = useState([]);
 
   const getAllQuestions = () => {
-      fetch(`${API}/stackflow`
+      fetch(`${API}/stack`
       ).then(data => data.json()).then(data => setStackData(data));
   }
 
@@ -121,7 +121,7 @@ const [stackData, setStackData] = useState([]);
               <AllQuestions data={_q} />
             </div>
           ))} */}
-          {stackData.map((stackData) => <AllQuestions stackData={stackData}/>)}
+           {stackData.map((stackData) => <AllQuestions stackData={stackData}/>)}
           {/* <AllQuestions/> */}
         </div>
       </div>
