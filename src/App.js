@@ -56,7 +56,7 @@ function App() {
         <Switch>
           <Route exact path={user ? '/' : "/auth"} component={user ? StackOverflow : Auth} />
           {/* <PrivateRoute exact path="/" component={StackOverflow}/> */}
-          <PrivateRoute exact path="/question" component={ViewQuestion}/>
+          <Route exact path="/question" component={ViewQuestion}/>
           <Route exact path="/add-question" component={Question}/>
         </Switch>
       </Router>
