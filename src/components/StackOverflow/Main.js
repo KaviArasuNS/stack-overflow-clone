@@ -65,7 +65,7 @@ const Main = () => {
 //     },
 // ];
   
-const API = "https://guvi-stack-clone.herokuapp.com";
+// const API = "https://guvi-stack-clone.herokuapp.com";
 
 const [stackData, setStackData] = useState([]);
 
