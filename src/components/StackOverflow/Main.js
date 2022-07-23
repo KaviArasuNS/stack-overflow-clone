@@ -70,7 +70,7 @@ const API = "https://guvi-stack-clone.herokuapp.com";
 const [stackData, setStackData] = useState([]);
 
   const getAllQuestions = () => {
-      fetch(`${API}/stack`
+      fetch("https://guvi-stack-clone.herokuapp.com/stack"
       ).then(data => data.json()).then(data => setStackData(data));
   }
 
