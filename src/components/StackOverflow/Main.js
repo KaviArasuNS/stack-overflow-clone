@@ -71,7 +71,10 @@ const [stackData, setStackData] = useState([]);
 
   const getAllQuestions = () => {
       fetch("https://guvi-stack-clone.herokuapp.com/stack"
-      ).then(data => data.json()).then(data => setStackData(data));
+      ).then(data => data.json()).then(data => {
+        setStackData(data)
+        console.log("Data is fetched", data);
+      });
   }
 
   console.log(getAllQuestions);
