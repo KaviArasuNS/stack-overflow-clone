@@ -65,12 +65,12 @@ const Main = () => {
 //     },
 // ];
   
-const API = "https://guvi-stack-clone.herokuapp.com/stack";
+const API = "https://guvi-stack-clone.herokuapp.com";
 
 const [stackData, setStackData] = useState([]);
 
   const getAllQuestions = () => {
-      fetch(`https://62a970b0ec36bf40bdb78a88.mockapi.io/stack`
+      fetch(`${API}/stack`
       ).then(data => data.json()).then(data => setStackData(data));
   }
 
