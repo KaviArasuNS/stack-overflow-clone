@@ -59,6 +59,7 @@ function App() {
           {/* <PrivateRoute exact path="/" component={StackOverflow}/> */}
           <Route exact path="/question" component={ViewQuestion}/>
           
+          
           <Route exact path="/add-question" component={Question}/>
         </Switch>
       </Router>
