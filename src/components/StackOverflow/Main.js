@@ -69,29 +69,29 @@ const Main = () => {
 
 const [stackData, setStackData] = useState([]);
 
-  // const getAllQuestions = () => {
-  //     fetch("https://guvi-stack-clone.herokuapp.com/stack"
-  //     ).then(data => data.json()).then(data => {
-  //       setStackData(data)
-  //       console.log("Data is fetched", data);
-  //     });
-  // }
+  const getAllQuestions = () => {
+      fetch("https://guvi-stack-clone.herokuapp.com/stack"
+      ).then(data => data.json()).then(data => {
+        setStackData(data)
+        console.log("Data is fetched", data);
+      });
+  }
 
-  // console.log(getAllQuestions);
+  console.log(getAllQuestions);
 
 
-  // useEffect(() => getAllQuestions,[])
+  useEffect(() => getAllQuestions(),[])
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    fetch('https://guvi-stack-clone.herokuapp.com/stack')
-    .then((data)=>data.json())
-    .then((fetchData)=> {
-      setStackData(fetchData)
-      console.log("data is fetched",fetchData);
-    });
+  //   fetch('https://guvi-stack-clone.herokuapp.com/stack')
+  //   .then((data)=>data.json())
+  //   .then((fetchData)=> {
+  //     setStackData(fetchData)
+  //     console.log("data is fetched",fetchData);
+  //   });
     
-  },[]);
+  // },[]);
 
   return (
    <div className="main">
