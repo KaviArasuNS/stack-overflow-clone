@@ -84,7 +84,7 @@ const Sidebar = () => {
             <p>TEAMS</p>
             <div className="link-tag">
               <WorkIcon />
-              <Link to="/">Companies</Link>
+              <Link to="/companies">Companies</Link>
               {/* <a href="/">Companies</a> */}
             </div>
           </div>

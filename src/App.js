@@ -9,6 +9,7 @@ import {
 import StackOverflow from "./components/StackOverflow";
 import ViewQuestion from './components/ViewQuestion' 
 import Question from './components/AddQuestion/Question'
+import Companies from './components/Companies/Main'
 import Auth from './components/Auth'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ import { login, logout, selectUser } from './features/userSlice';
 import { Component, useEffect } from 'react';
 import { auth } from "./firebase";
 import { Routes } from "react-router-dom";
+import Main from './components/Companies/Main';
 
 function App() {
   const user = useSelector(selectUser);
@@ -58,9 +60,8 @@ function App() {
           <Route exact path={user ? '/' : "/auth"} component={user ? StackOverflow : Auth} />
           {/* <PrivateRoute exact path="/" component={StackOverflow}/> */}
           <Route exact path="/question" component={ViewQuestion}/>
-          
-          
           <Route exact path="/add-question" component={Question}/>
+          <Route exact path="/companies" component={Main} />
         </Switch>
       </Router>
     </div>
