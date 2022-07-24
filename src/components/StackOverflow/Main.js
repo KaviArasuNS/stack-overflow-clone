@@ -5,6 +5,7 @@ import "./main.css";
 import { Link } from "react-router-dom";
 import AllQuestions from './AllQuestions';
 import { useState, useEffect } from "react";
+import Button from '@mui/material/Button';
 
 const Main = () => {
 //   const stackData = [
@@ -67,10 +68,12 @@ const Main = () => {
   
 // const API = "https://guvi-stack-clone.herokuapp.com";
 
+const API = "https://guvi-stack-clone.herokuapp.com"
+
 const [stackData, setStackData] = useState([]);
 
   const getAllQuestions = () => {
-      fetch("https://guvi-stack-clone.herokuapp.com/stack"
+      fetch(`${API}/stack`
       ).then(data => data.json()).then(data => {
         setStackData(data)
         console.log("Data is fetched", data);
@@ -103,7 +106,7 @@ const [stackData, setStackData] = useState([]);
           </Link> */}
           
           <a href="/add-question"> 
-            Ask Question
+            <Button variant="contained">Ask Question</Button>
            </a>
         </div>
         <div className="main-desc">

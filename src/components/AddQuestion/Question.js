@@ -8,26 +8,60 @@ import { useEffect, useState } from "react";
 // import Editor from "react-quill/lib/toolbar";
 import {Editor, EditorState} from 'draft-js';
 import 'draft-js/dist/Draft.css';
+import { auth } from "../../firebase";
 
 
 
 import "./question.css";
 // import axios from "axios";
 import { TagsInput } from "react-tag-input-component";
+import { useHistory } from 'react-router-dom';
 // import { selectUser } from "../../feature/userSlice";
 // import { useHistory } from "react-router-dom";
 // import ChipsArray from "./TagsInput";
 
 const Question = () => {
-
-  const [editorState, setEditorState] = React.useState(
-    () => EditorState.createEmpty(),
-  );
-
   // const [editorState, setEditorState] = useState(() =>
   //   EditorState.createEmpty(),);
-  
-  
+    
+  const API = "https://guvi-stack-clone.herokuapp.com"
+
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
+  const [language1, setLanguage1] = useState();
+  const [language2, setLanguage2] = useState();
+  const [language3, setLanguage3] = useState();
+
+
+  const history = useHistory();
+ 
+  const addQuestion = () =>{
+
+  const newQuestion = [
+    {
+      title: title,
+      description: description,
+      language1: language1,
+      language2: language2,
+      language3: language3,
+      votes: "0",
+      views: "0",
+      username: "Rahul"
+    }
+  ]  
+
+    fetch(`${API}/stack`, 
+     {
+      method: "POST",
+      body:JSON.stringify(newQuestion),
+      headers:{
+        "Content-type": "application/json",
+      },
+    })
+      console.log(newQuestion);
+  }
+
+
   return (
     <div className="add-question">
       <div className="add-question-container">
@@ -40,14 +74,12 @@ const Question = () => {
               <div className="title">
                 <h3>Title</h3>
                 <small>
-                  Be specific and imagine you’re asking a question to another
-                  person
+                  Be specific and imagine you're asking a question to another person
                 </small>
                 <input
-                  // value={title}
-                  // onChange={(e) => setTitle(e.target.value)}
+                  onChange={(e) => setTitle(e.target.value)}
                   type="text"
-                  placeholder="e.g Is there an R function for finding teh index of an element in a vector?"
+                  placeholder="e.g Is there an R function for finding teh index of an element in a hello?"
                 />
               </div>
             </div>
@@ -58,40 +90,21 @@ const Question = () => {
                   Include all the information someone would need to answer your
                   question
                 </small>
-                {/* <ReactQuill
-                  value={body}
-                  onChange={handleQuill}
-                  modules={Editor.modules}
-                  className="react-quill"
-                  theme="snow"
-                /> */}
-                <Editor editorState={editorState} onChange={setEditorState} />
+                <input type="text"  className="question-area" onChange={(e) => setDescription(e.target.value)} />
               </div>
             </div>
             <div className="question-option">
               <div className="title">
                 <h3>Tags</h3>
                 <small>
-                  Add up to 5 tags to describe what your question is about
+                  Add up to 3 tags to describe what your question is about
                 </small>
-                {/* <input
-                  value={tag}
-                  onChange={(e) => setTag(e.target.value)}
-                  data-role="tagsinput"
-                  data-tag-trigger="Space"
-                  type="text"
-                  placeholder="e.g. (asp.net-mvc php react json)"
-                /> */}
-
-                <TagsInput
-                  // value={tag}
-                  // onChange={setTag}
-                  name="fruits"
-                  placeHolder="press enter to add new tag"
-                />
-
+                <input type="text" className='tags' onChange={(e) => setLanguage1(e.target.value)}/>
+                <input type="text" className='tags' onChange={(e) => setLanguage2(e.target.value)}/>
+                <input type="text" className='tags' onChange={(e) => setLanguage3(e.target.value)}/>
                 {/* <ChipsArray /> */}
               </div>
+
             </div>
           </div>
         </div>
@@ -99,7 +112,7 @@ const Question = () => {
         {/* <button onClick={handleSubmit} className="button">
           Add your question
         </button> */}
-        <button className="button">
+        <button className="button" onClick={addQuestion}>
           Add your question
         </button>
       </div>

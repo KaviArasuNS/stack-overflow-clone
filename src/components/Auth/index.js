@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import './index.css'
+// import { useHistory } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 

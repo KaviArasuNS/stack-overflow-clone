@@ -62,18 +62,6 @@ const AllQuestions = ({stackData}) => {
             <span className="question-tags">{stackData.language1}</span>                             
             <span className="question-tags">{stackData.language2}</span>                              
             <span className="question-tags">{stackData.language3}</span>                             
-            {/* {tags.map((_tag) => (
-              <p
-                style={{
-                  margin: "10px 5px",
-                  padding: "5px 10px",
-                  backgroundColor: "#007cd446",
-                  borderRadius: "3px",
-                }}
-              >
-                {_tag}
-              </p>
-            ))} */}
           </div>
           <div className="author">
             {/* <small>{data.create_at}</small> */}

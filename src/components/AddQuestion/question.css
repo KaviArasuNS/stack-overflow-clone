@@ -100,3 +100,12 @@
 button:hover {
   background-color: #053086;
 }
+
+.question-area{
+  border: 3px solid black;
+  height: 100px;
+}
+
+.tags{
+  width: 250px;
+}

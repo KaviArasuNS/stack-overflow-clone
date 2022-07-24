@@ -46,14 +46,14 @@ const Sidebar = () => {
           <div className="sidebar-option">
             <p>FIND A JOB</p>
             <div className="link">
-              <Link
+              {/* <Link
                 style={{
                   margin: "10px 20px",
                 }}
                 to="/"
               >
                 Jobs
-              </Link>
+              </Link> */}
               {/* <a
                 style={{
                   margin: "10px 20px",
@@ -74,18 +74,10 @@ const Sidebar = () => {
                 style={{
                   marginLeft: "20px",
                 }}
-                to="/"
+                to="/companies"
               >
                 Companies
               </Link>
-            </div>
-          </div>
-          <div className="sidebar-option">
-            <p>TEAMS</p>
-            <div className="link-tag">
-              <WorkIcon />
-              <Link to="/companies">Companies</Link>
-              {/* <a href="/">Companies</a> */}
             </div>
           </div>
         </div>
