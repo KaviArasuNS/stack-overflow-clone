@@ -57,7 +57,7 @@ const Question = () => {
       headers:{
         "Content-type": "application/json",
       },
-    })
+    }).then(() => history.push("/"));
       console.log(newQuestion);
   }
 

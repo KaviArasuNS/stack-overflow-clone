@@ -9,6 +9,7 @@ import { selectUser } from '../../features/userSlice';
 import { signOut } from 'firebase/auth';
 import { useSelector } from 'react-redux/es/exports';
 import { auth } from '../../firebase';
+import Button from '@mui/material/Button';
 
 const Header = () => {
   const user = useSelector(selectUser)
@@ -37,6 +38,12 @@ const Header = () => {
             ><Avatar src={user?.photo}/></span>
             <InboxIcon/>
            <ChatIcon/>
+           <Button variant="outlined" onClick={() => {
+            auth.signOut()
+            history.push('/auth')
+            }
+          }
+            >Sign In / Sign Out</Button>
           </div>
         </div>
     </div>

@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Sidebar from '../StackOverflow/Sidebar';
 import Companies from './Companies';
+import Button from '@mui/material/Button';
+
 
 const Main = () => {
 
@@ -47,7 +49,7 @@ const [companiesData, setCompaniesData] = useState([]);
         <div className="main-top">
           <h2>All Questions</h2>
           <a href="/add-question"> 
-            Ask Question
+            <Button variant="contained">Ask Question</Button>
            </a>
         </div>
         <div className="main-desc">

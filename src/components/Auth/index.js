@@ -69,7 +69,7 @@ const Index = () => {
         <div className="sign-options">
             <div className="single-option">
                 <img onClick = {handleSignInGoogle} src='https://bit.ly/2voiAYI' alt='google'/>
-                <p>Login with google</p>
+                <p onClick = {handleSignInGoogle}>Login with google</p>
             </div>
             <div className="auth-login">
                 <div className="auth-login-container">
