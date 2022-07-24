@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import { useEffect, useState } from "react";
+import TextField from '@mui/material/TextField';
 // import { useSelector } from "react-redux";
 
 // import ReactQuill from "react-quill";
@@ -86,11 +87,19 @@ const Question = () => {
             <div className="question-option">
               <div className="title">
                 <h3>Body</h3>
-                <small>
+                <small className='question-body'>
                   Include all the information someone would need to answer your
                   question
                 </small>
-                <input type="text"  className="question-area" onChange={(e) => setDescription(e.target.value)} />
+                {/* <input type="text"  className="question-area"  /> */}
+                 <TextField
+                    id="outlined-multiline-static"
+                    label="Body"
+                    multiline
+                    rows={4}
+                    defaultValue="Default Value"
+                    onChange={(e) => setDescription(e.target.value)}
+                    />
               </div>
             </div>
             <div className="question-option">

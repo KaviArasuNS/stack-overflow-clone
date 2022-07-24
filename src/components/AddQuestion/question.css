@@ -109,3 +109,7 @@ button:hover {
 .tags{
   width: 250px;
 }
+
+.question-body{
+  margin-bottom: 20px;
+}

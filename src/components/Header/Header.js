@@ -25,7 +25,7 @@ const Header = () => {
         <div className='header-middle'>
           <div className="header-search-container">
             <SearchIcon/>
-            <input type = "text" placeholder='Search...'/>
+            <input type = "text" placeholder='SIGN IN To Access This Website'/>
           </div>
         </div>
         <div className='header-right'>
