@@ -4,6 +4,7 @@ import StarsIcon from '@mui/icons-material/Stars';
 import WorkIcon from '@mui/icons-material/Work';
 import { Link } from "react-router-dom";
 import './sidebar.css'
+import Button from '@mui/material/Button';
 
 
 const Sidebar = () => {
@@ -76,7 +77,7 @@ const Sidebar = () => {
                 }}
                 to="/companies"
               >
-                Companies
+                <Button variant="outlined">Companies</Button>
               </Link>
             </div>
           </div>

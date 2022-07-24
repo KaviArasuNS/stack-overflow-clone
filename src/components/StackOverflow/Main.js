@@ -139,7 +139,7 @@ const [stackData, setStackData] = useState([]);
               <AllQuestions data={_q} />
             </div>
           ))} */}
-           {stackData.map((stackData) => <AllQuestions stackData={stackData}/>)}
+           {stackData.map((stackData) => <AllQuestions stackData={stackData}/>).reverse()}
           {/* <AllQuestions/> */}
         </div>
       </div>

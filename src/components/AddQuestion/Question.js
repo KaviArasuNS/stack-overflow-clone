@@ -32,6 +32,7 @@ const Question = () => {
   const [language1, setLanguage1] = useState();
   const [language2, setLanguage2] = useState();
   const [language3, setLanguage3] = useState();
+  const [username, setUsername] = useState();
 
 
   const history = useHistory();
@@ -47,7 +48,7 @@ const Question = () => {
       language3: language3,
       votes: "0",
       views: "0",
-      username: "Rahul"
+      username: username,
     }
   ]  
 
@@ -73,6 +74,17 @@ const Question = () => {
           <div className="question-options">
             <div className="question-option">
               <div className="title">
+                <h3>Name</h3>
+                <small>
+                  Please enter your name that's visible to Everyone
+                </small>
+                <input
+                  onChange={(e) => setUsername(e.target.value)}
+                  type="text"
+                  placeholder="John Appleseed"
+                />
+              </div>
+              <div className="title">
                 <h3>Title</h3>
                 <small>
                   Be specific and imagine you're asking a question to another person
@@ -94,10 +106,8 @@ const Question = () => {
                 {/* <input type="text"  className="question-area"  /> */}
                  <TextField
                     id="outlined-multiline-static"
-                    label="Body"
                     multiline
                     rows={4}
-                    defaultValue="Default Value"
                     onChange={(e) => setDescription(e.target.value)}
                     />
               </div>

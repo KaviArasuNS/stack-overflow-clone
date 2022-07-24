@@ -25,8 +25,9 @@ const AllQuestions = ({stackData}) => {
         <div className="all-questions-left">
           <div className="all-options">
             <div className="all-option">
-              <p>0</p>
-              <span>{stackData.votes}</span>                                                                   
+              <p></p>
+              <p >Votes</p>
+              <span className='margintop'>{stackData.votes}</span>                                                                   
             </div>
             <div className="all-option">
               {/* <p>{data?.answerDetails?.length}</p> */}
